@@ -1,0 +1,151 @@
+/* Custom styles beyond Tailwind utilities */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hide scrollbar on category rail */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cart drawer */
+.cart-drawer {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.cart-drawer.open {
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.cart-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal */
+.modal-panel {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-panel.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-panel .modal-inner {
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.25s ease;
+}
+
+.modal-panel.open .modal-inner {
+  transform: scale(1) translateY(0);
+}
+
+.modal-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Toast */
+.toast {
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Dish card hover */
+.dish-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+/* Badge pop */
+@keyframes badge-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.badge-pop {
+  animation: badge-pop 0.35s ease;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid #4b911f;
+  outline-offset: 2px;
+}
+
+/* Cookie banner */
+.cookie-banner {
+  transform: translateY(100%);
+  transition: transform 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cookie-banner.show {
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Body lock when drawer/modal open */
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Image fallback */
+.dish-img {
+  background: linear-gradient(135deg, #f1f8ec 0%, #e5e7eb 100%);
+}
