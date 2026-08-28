@@ -1,7 +1,11 @@
-# Netlify config — link this repo in Netlify: Site settings → Build & deploy → Link repository
+# Netlify — publish from repo root (NOT the local-only deploy/ folder)
 [build]
   publish = "."
-  command = "echo 'No build step'"
+  command = "echo 'Static site — no build step'"
+
+# Ensure production deploys track main
+[context.production]
+  publish = "."
 
 [[headers]]
   for = "/*"
@@ -9,3 +13,13 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
