@@ -1,0 +1,12 @@
+node_modules/
+package.json
+package-lock.json
+test-cart.cjs
+test-cart.mjs
+scripts/
+deploy/
+.DS_Store
+Thumbs.db
+*.zip
+.vscode/
+.cursor/

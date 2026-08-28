@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#4b911f" />
+  <meta name="description" content="Bestel online bij Sushi Klassiek in Amsterdam. Verse sushi, poke bowls en meer. 10% korting vanaf €20 via de website." />
+  <title>Sushi Klassiek Amsterdam | Bestel Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#4b911f',
+              dark: '#3d7719',
+              light: '#f1f8ec',
+            },
+          },
+          fontFamily: {
+            sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+
+  <!-- Status bar -->
+  <div class="bg-gray-900 text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-9 gap-3">
+      <div class="flex items-center gap-2 min-w-0">
+        <span data-open-status class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wide bg-red-500">Gesloten</span>
+        <span data-open-detail class="truncate text-gray-300 text-xs sm:text-sm">Laden…</span>
+      </div>
+      <div class="flex items-center gap-1 shrink-0" role="group" aria-label="Taal">
+        <button type="button" class="px-1.5 py-0.5 rounded text-xs font-medium bg-white/15 text-white" aria-current="true">NL</button>
+        <button type="button" class="px-1.5 py-0.5 rounded text-xs font-medium text-gray-400 hover:text-white transition-colors">EN</button>
+        <button type="button" class="px-1.5 py-0.5 rounded text-xs font-medium text-gray-400 hover:text-white transition-colors">DE</button>
+        <button type="button" class="px-1.5 py-0.5 rounded text-xs font-medium text-gray-400 hover:text-white transition-colors">PT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-2.5 shrink-0 group">
+        <span class="w-9 h-9 rounded-xl bg-brand flex items-center justify-center text-white text-lg font-bold shadow-sm group-hover:bg-brand-dark transition-colors">🍣</span>
+        <div class="leading-tight">
+          <span class="block font-bold text-gray-900 text-sm sm:text-base">Sushi Klassiek</span>
+          <span class="hidden sm:block text-[11px] text-gray-400 font-medium">Amsterdam</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Hoofdnavigatie">
+        <a href="#home" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-brand-light transition-colors">Home</a>
+        <a href="#menukaart" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-brand-light transition-colors">Menukaart</a>
+        <a href="#informatie" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-brand-light transition-colors">Informatie</a>
+        <a href="#beoordelingen" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-brand-light transition-colors">Beoordelingen</a>
+        <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-brand-light transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" data-open-cart class="relative inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Winkelwagen openen">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+          <span class="hidden sm:inline">Winkelwagen</span>
+          <span data-cart-count class="hidden absolute -top-1.5 -right-1.5 min-w-[1.25rem] h-5 px-1 rounded-full bg-red-500 text-[11px] font-bold items-center justify-center">0</span>
+        </button>
+        <button type="button" id="mobile-nav-toggle" class="lg:hidden p-2 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="hidden lg:hidden border-t border-gray-200 bg-white" role="navigation" aria-label="Mobiel menu">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
+        <a href="#home" class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-light hover:text-brand">Home</a>
+        <a href="#menukaart" class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-light hover:text-brand">Menukaart</a>
+        <a href="#informatie" class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-light hover:text-brand">Informatie</a>
+        <a href="#beoordelingen" class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-light hover:text-brand">Beoordelingen</a>
+        <a href="#contact" class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-light hover:text-brand">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Closed notice -->
+  <div id="closed-notice" class="hidden bg-amber-50 border-b border-amber-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
+      <p class="text-amber-900">
+        <strong>Wij bezorgen vandaag niet (meer).</strong>
+        <span data-closed-detail class="text-amber-800"></span>
+        U kunt wel alvast vooruitbestellen.
+      </p>
+      <a href="#menukaart" class="inline-flex items-center font-semibold text-brand hover:text-brand-dark shrink-0">Vooruitbestellen →</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="https://www.sushiklassiek.nl/algemeen/img/photos/sorted/oosters/sushi/sushi5.jpg" alt="" class="w-full h-full object-cover" width="1600" height="900" loading="eager" decoding="async" referrerpolicy="no-referrer" />
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-gray-900/40"></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-32">
+        <div class="max-w-xl">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span data-open-status class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-red-500 text-white">Gesloten</span>
+            <span data-open-detail class="text-sm text-gray-300"></span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight">
+            Welkom Online bestellen bij Sushi Klassiek in Amsterdam!
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-gray-300 leading-relaxed">
+            Verse sushi, poke bowls en specials. Bestel eenvoudig online — 10% korting vanaf €20 via website of app.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#menukaart" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold shadow-lg shadow-brand/25 transition-colors">
+              Bestel nu
+            </a>
+            <a href="#informatie" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold border border-white/20 backdrop-blur transition-colors">
+              Openingstijden
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo tiles -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-8 relative z-10" aria-label="Acties">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <a href="#menukaart" class="group bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:border-brand/40 hover:shadow-md transition-all">
+          <div class="w-10 h-10 rounded-xl bg-brand-light text-brand flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.036-3.595a.75.75 0 01.752.002A12.002 12.002 0 0121.75 12c0 5.385-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12c0-2.05.635-3.96 1.724-5.543a.75.75 0 01.752-.002L12 9.75l6.274-3.097z"/></svg>
+          </div>
+          <h2 class="font-semibold text-gray-900 group-hover:text-brand transition-colors">Bestel met korting!</h2>
+          <p class="mt-1 text-sm text-gray-500">Op elke bestelling via onze website krijgt u <strong class="text-gray-700">10% korting</strong> vanaf €20,00!</p>
+        </a>
+
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-brand-light text-brand flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+          </div>
+          <h2 class="font-semibold text-gray-900">Punten sparen!</h2>
+          <p class="mt-1 text-sm text-gray-500">Bij elke bestede €25 spaart u 1 punt. Bij 5 punten krijgt u 10% korting!</p>
+        </div>
+
+        <a href="#menukaart" class="group bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:border-brand/40 hover:shadow-md transition-all">
+          <div class="w-10 h-10 rounded-xl bg-brand-light text-brand flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/></svg>
+          </div>
+          <h2 class="font-semibold text-gray-900 group-hover:text-brand transition-colors">Onze hardlopers!</h2>
+          <p class="mt-1 text-sm text-gray-500">Bekijk welke gerechten het meest populair zijn en bestel direct.</p>
+        </a>
+
+        <a href="#beoordelingen" class="group bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:border-brand/40 hover:shadow-md transition-all">
+          <div class="w-10 h-10 rounded-xl bg-brand-light text-brand flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+          </div>
+          <h2 class="font-semibold text-gray-900 group-hover:text-brand transition-colors">4 sterren!</h2>
+          <p class="mt-1 text-sm text-gray-500">Na 9 beoordelingen geven onze klanten ons 4 sterren. Bestel en ervaar het zelf!</p>
+        </a>
+
+        <div class="sm:col-span-2 lg:col-span-2 xl:col-span-2 bg-white rounded-2xl border border-gray-200 p-5 shadow-sm flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-brand-light text-brand flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h2 class="font-semibold text-gray-900">Blijf op de hoogte!</h2>
+            <p class="mt-0.5 text-sm text-gray-500">Meld u aan voor de nieuwsbrief voor unieke kortingen en acties.</p>
+          </div>
+          <form id="newsletter-form" class="flex flex-wrap gap-2 w-full sm:w-auto">
+            <label for="newsletter-email" class="sr-only">E-mailadres</label>
+            <input id="newsletter-email" type="email" required placeholder="uw@email.nl" class="flex-1 min-w-0 sm:w-48 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+            <button type="submit" class="px-4 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold transition-colors shrink-0">Aanmelden</button>
+          </form>
+        </div>
+
+        <a href="#menukaart" class="group bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-5 shadow-sm text-white hover:shadow-md transition-all">
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+          </div>
+          <h2 class="font-semibold">Nieuwsgierig naar ons menu?</h2>
+          <p class="mt-1 text-sm text-white/80">Scroll naar beneden om onze menukaart te bekijken en direct te bestellen!</p>
+          <span class="inline-flex mt-3 text-sm font-semibold underline underline-offset-2">Naar menu →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick info strip (Xanthine-style) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-10" aria-label="Snelle info">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Bezorging</p>
+          <p class="mt-1 text-lg font-bold text-gray-900">Vanaf €2,50</p>
+          <p class="text-sm text-gray-500">Min. €15,00</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Afhalen</p>
+          <p class="mt-1 text-lg font-bold text-gray-900">Gratis</p>
+          <p class="text-sm text-gray-500">Geen minimum</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Adres</p>
+          <p class="mt-1 text-sm font-semibold text-gray-900">Commelinstraat 292</p>
+          <p class="text-sm text-gray-500">1093VD Amsterdam</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Bel ons</p>
+          <a href="tel:0686450614" class="mt-1 block text-lg font-bold text-brand hover:text-brand-dark">06 8645 0614</a>
+          <p class="text-sm text-gray-500">Vragen of reserveren</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu + cart layout -->
+    <section id="menukaart" class="max-w-7xl mx-auto px-4 sm:px-6 mt-14 pb-24 lg:pb-16">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Menu column -->
+        <div class="flex-1 min-w-0">
+          <div class="mb-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Menukaart</h2>
+            <p class="mt-1 text-gray-500">Kies uw favorieten en voeg ze toe aan de winkelwagen.</p>
+          </div>
+
+          <!-- Sticky category rail -->
+          <div class="sticky top-16 z-30 py-3 bg-gray-50/95 backdrop-blur-sm border-b border-gray-200 mb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+            <div id="category-rail" class="flex gap-2 overflow-x-auto no-scrollbar pb-0.5" role="tablist" aria-label="Categorieën"></div>
+          </div>
+
+          <!-- Popular -->
+          <div class="mb-10">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Populaire gerechten</h3>
+            <div id="popular-grid" class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3"></div>
+          </div>
+
+          <div id="menu-sections"></div>
+        </div>
+
+        <!-- Desktop cart sidebar -->
+        <aside class="hidden lg:block w-80 xl:w-96 shrink-0">
+          <div class="sticky top-24 bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+              <h3 class="font-bold text-gray-900">Uw bestelling</h3>
+              <span data-cart-count class="hidden min-w-[1.25rem] h-5 px-1.5 rounded-full bg-brand text-white text-[11px] font-bold items-center justify-center">0</span>
+            </div>
+            <div id="cart-sidebar-body" class="px-5 py-4 max-h-[calc(100vh-10rem)] overflow-y-auto"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="beoordelingen" class="bg-white border-y border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Beoordelingen</h2>
+            <p class="mt-1 text-gray-500">Wat onze klanten zeggen</p>
+          </div>
+          <div class="flex items-center gap-3 bg-brand-light rounded-2xl px-5 py-3">
+            <span class="text-3xl font-extrabold text-brand">4.0</span>
+            <div>
+              <div class="flex gap-0.5 text-amber-400" aria-hidden="true">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              </div>
+              <p class="text-xs text-gray-500 mt-0.5">9 klantreviews</p>
+            </div>
+          </div>
+        </div>
+        <div id="reviews-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- Info: hours + delivery -->
+    <section id="informatie" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Informatie</h2>
+      <p class="text-gray-500 mb-8">Openingstijden en bezorggebieden</p>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-4">Openingstijden</h3>
+          <table class="w-full text-sm">
+            <tbody id="hours-tbody"></tbody>
+          </table>
+          <p class="mt-4 text-xs text-gray-400">Bezorgtijden komen overeen met de openingstijden. Donderdag gesloten.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Bezorggebieden</h3>
+          <div id="delivery-areas" class="grid sm:grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-white border-t border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Contact</h2>
+        <p class="text-gray-500 mb-8">Kom langs of bel ons</p>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="space-y-5">
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Adres</p>
+              <p class="mt-1 font-semibold text-gray-900">Sushi Klassiek</p>
+              <p class="text-gray-600">Commelinstraat 292<br />1093VD Amsterdam</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Telefoon</p>
+              <a href="tel:0686450614" class="mt-1 block text-xl font-bold text-brand hover:text-brand-dark">06 8645 0614</a>
+            </div>
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">E-mail</p>
+              <a href="mailto:info@sushiklassiek.nl" class="mt-1 block font-semibold text-gray-900 hover:text-brand">info@sushiklassiek.nl</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm min-h-[320px] bg-gray-100">
+            <iframe
+              title="Kaart – Sushi Klassiek Amsterdam"
+              class="w-full h-full min-h-[320px]"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Commelinstraat%20292%2C%201093VD%20Amsterdam&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white text-sm">🍣</span>
+            <span class="font-bold text-white">Sushi Klassiek</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">Verse sushi in Amsterdam. Bestel online voor bezorging of afhalen.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Handige links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#home" class="hover:text-brand transition-colors">Home</a></li>
+            <li><a href="#menukaart" class="hover:text-brand transition-colors">Bestellen</a></li>
+            <li><a href="#informatie" class="hover:text-brand transition-colors">Openingstijden</a></li>
+            <li><a href="#beoordelingen" class="hover:text-brand transition-colors">Reviews</a></li>
+            <li><a href="#contact" class="hover:text-brand transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Contact</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Commelinstraat 292</li>
+            <li>1093VD Amsterdam</li>
+            <li><a href="tel:0686450614" class="hover:text-brand transition-colors">06 8645 0614</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-3">Openingstijden</h4>
+          <ul class="space-y-1.5 text-sm text-gray-400">
+            <li class="flex justify-between gap-2"><span>Ma</span><span>16:00 – 22:00</span></li>
+            <li class="flex justify-between gap-2"><span>Di</span><span>19:00 – 01:00</span></li>
+            <li class="flex justify-between gap-2"><span>Wo</span><span>16:00 – 01:00</span></li>
+            <li class="flex justify-between gap-2"><span>Do</span><span>Gesloten</span></li>
+            <li class="flex justify-between gap-2"><span>Vr–Zo</span><span>16:00 – 01:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-gray-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-gray-500">
+        <p>© 2008 – 2026 Sushi Klassiek. Alle rechten voorbehouden.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-gray-300">Privacybeleid</a>
+          <a href="#" class="hover:text-gray-300">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile cart bar -->
+  <button type="button" id="mobile-cart-bar" class="hidden lg:hidden fixed bottom-0 inset-x-0 z-40 bg-brand text-white shadow-lg border-t border-brand-dark">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between font-semibold">
+      <span class="flex items-center gap-2">
+        <span data-cart-count class="hidden min-w-[1.5rem] h-6 px-1.5 rounded-full bg-white text-brand text-xs font-bold items-center justify-center">0</span>
+        Bekijk winkelwagen
+      </span>
+      <span data-cart-total>€ 0,00</span>
+    </div>
+  </button>
+
+  <!-- Cart overlay + drawer (clipped so off-screen drawer cannot cause horizontal scroll) -->
+  <div id="cart-layer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div id="cart-overlay" class="cart-overlay absolute inset-0 bg-black/40" aria-hidden="true"></div>
+    <aside id="cart-drawer" class="cart-drawer absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col" aria-hidden="true" role="dialog" aria-label="Winkelwagen">
+      <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="font-bold text-gray-900 text-lg">Uw bestelling</h3>
+        <button type="button" id="drawer-close" class="p-2 rounded-xl hover:bg-gray-100 text-gray-500" aria-label="Sluiten">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="cart-drawer-body" class="flex-1 overflow-y-auto px-5 py-4"></div>
+    </aside>
+  </div>
+
+  <!-- Checkout modal -->
+  <div id="modal-backdrop" class="modal-backdrop fixed inset-0 z-[60] bg-black/50" aria-hidden="true"></div>
+  <div id="checkout-modal" class="modal-panel fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <div class="modal-inner w-full sm:max-w-lg max-h-[92vh] overflow-y-auto bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl">
+      <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex items-center justify-between rounded-t-3xl sm:rounded-t-2xl z-10">
+        <h3 id="checkout-title" class="font-bold text-gray-900 text-lg">Afrekenen</h3>
+        <button type="button" id="checkout-close" class="p-2 rounded-xl hover:bg-gray-100 text-gray-500" aria-label="Sluiten">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="checkout-form-view" class="p-5">
+        <div class="flex rounded-xl bg-gray-100 p-1 gap-1 mb-5">
+          <button type="button" data-checkout-fulfill="delivery" class="flex-1 py-2.5 rounded-lg text-sm font-medium bg-white shadow text-brand">Bezorgen</button>
+          <button type="button" data-checkout-fulfill="pickup" class="flex-1 py-2.5 rounded-lg text-sm font-medium text-gray-600">Afhalen</button>
+        </div>
+
+        <form id="checkout-form" class="space-y-4" novalidate>
+          <div>
+            <label for="checkout-name" class="block text-sm font-medium text-gray-700 mb-1">Naam *</label>
+            <input id="checkout-name" name="name" type="text" required autocomplete="name" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="checkout-phone" class="block text-sm font-medium text-gray-700 mb-1">Telefoon *</label>
+              <input id="checkout-phone" name="phone" type="tel" required autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+            </div>
+            <div>
+              <label for="checkout-email" class="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
+              <input id="checkout-email" name="email" type="email" required autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+            </div>
+          </div>
+
+          <div id="checkout-address-fields" class="space-y-4">
+            <div>
+              <label for="checkout-address" class="block text-sm font-medium text-gray-700 mb-1">Adres *</label>
+              <input id="checkout-address" name="address" type="text" autocomplete="street-address" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="checkout-postcode" class="block text-sm font-medium text-gray-700 mb-1">Postcode *</label>
+                <input id="checkout-postcode" name="postcode" type="text" autocomplete="postal-code" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+              </div>
+              <div>
+                <label for="checkout-city" class="block text-sm font-medium text-gray-700 mb-1">Plaats *</label>
+                <input id="checkout-city" name="city" type="text" autocomplete="address-level2" value="Amsterdam" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="checkout-note" class="block text-sm font-medium text-gray-700 mb-1">Opmerking</label>
+            <textarea id="checkout-note" name="note" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none resize-none" placeholder="Bijv. allergieën, etage, bel niet…"></textarea>
+          </div>
+
+          <div id="checkout-summary" class="bg-gray-50 rounded-2xl border border-gray-200 p-4"></div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold transition-colors">
+            Bestelling plaatsen
+          </button>
+          <p class="text-xs text-center text-gray-400">Demo: er wordt geen echte betaling verwerkt.</p>
+        </form>
+      </div>
+
+      <div id="checkout-success-view" class="hidden p-8 text-center">
+        <div class="mx-auto w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        </div>
+        <h4 class="text-xl font-bold text-gray-900">Bedankt voor uw bestelling!</h4>
+        <p class="mt-2 text-sm text-gray-500">We hebben uw bestelling ontvangen.</p>
+        <dl class="mt-6 text-left bg-gray-50 rounded-2xl border border-gray-200 p-4 space-y-2 text-sm">
+          <div class="flex justify-between"><dt class="text-gray-500">Ordernummer</dt><dd class="font-semibold" data-order-id>—</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Naam</dt><dd class="font-semibold" data-order-name>—</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Type</dt><dd class="font-semibold" data-order-type>—</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Totaal</dt><dd class="font-bold text-brand" data-order-total>—</dd></div>
+        </dl>
+        <button type="button" id="checkout-done" class="mt-6 w-full py-3 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold transition-colors">
+          Sluiten
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast fixed left-1/2 -translate-x-1/2 z-[80] max-w-[calc(100vw-2rem)] px-4 py-2.5 rounded-xl bg-gray-900 text-white text-sm font-medium shadow-lg pointer-events-none text-center" role="status" aria-live="polite"></div>
+
+  <!-- Cookie banner -->
+  <div id="cookie-banner" class="cookie-banner fixed bottom-0 inset-x-0 z-30 bg-white border-t border-gray-200 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-4">
+      <p class="text-sm text-gray-600 flex-1">
+        Wij gebruiken cookies om te zorgen dat u de beste ervaring op onze website krijgt. U kunt third-party cookies weigeren of accepteren.
+        <a href="#" class="text-brand font-medium underline underline-offset-2">Privacybeleid</a>
+      </p>
+      <div class="flex gap-2 shrink-0">
+        <button type="button" id="cookie-reject" class="px-4 py-2 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50">Weigeren</button>
+        <button type="button" id="cookie-accept" class="px-4 py-2 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold">Accepteren</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
